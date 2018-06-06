@@ -31,13 +31,15 @@ main() {
 	esac 
 
 	# Set working directory and check if command exists
-	export WORKINGDIR=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
-	if [ ! -e "WORKINGDIR/git-owo-$subcommand" ]; then
+	export workingdir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+	if [ ! -e "$workingdir/git-owo-$subcommand" ]; then
 		usage; exit 1
 	fi
 
+	echo "$workingdir"
+
 	# Load subcommand file and check that subcommand function exists
-	source "$WORKINGDIR/git-owo-$subcommand"
+	source "$workingdir/git-owo-$subcommand"
 	if [ ! type "cmd_$subcommand" ]; then
 		usage; exit 1
 	fi

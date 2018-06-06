@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+
+usage() {
+	echo "usage: git owo commit [options]"
+	echo
+}
+
+cmd_commit() {
+	if [ "$#" -lt 1 ]; then 
+		usage; exit 1
+	elif [ $1 == "help" ]; then
+		usage; exit 0
+	fi 
+
+	str=""
+	for var in "$@"
+	do
+		echo "$var"
+		str="$str $var"
+	done
+
+	echo "$str"
+}
+
+
+# testing purposes only
+cmd_commit "$@"
