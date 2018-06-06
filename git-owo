@@ -1,0 +1,49 @@
+#!/usr/bin/env sh
+
+version() {
+	echo "git owo v0.1.0"
+	echo
+}
+
+usage() {
+	echo "usage: git owo <subcommand>"
+	echo
+	echo "Available subcommands are:"
+	echo "commit <message>  Translates your commit to owo then commits it."
+}
+
+main() {
+	# Show usage if not enough arguments were passed in
+	if [ "$#" -lt 1 ]; then 
+		usage; exit 1
+	fi
+
+	local subcommand="$1"; shift
+
+	# Look for common functions
+	case $subcommand in 
+		"-h"|"--help")
+			usage; exit 0
+			;;
+		"-v"|"--version")
+			version; exit 0
+			;;
+	esac 
+
+	# Set working directory and check if command exists
+	export WORKINGDIR=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+	if [ ! -e "WORKINGDIR/git-owo-$subcommand" ]; then
+		usage; exit 1
+	fi
+
+	# Load subcommand file and check that subcommand function exists
+	source "$WORKINGDIR/git-owo-$subcommand"
+	if [ ! type "cmd_$subcommand" ]; then
+		usage; exit 1
+	fi
+
+	# Run command
+	cmd_$subcommand "$@"
+}
+
+main "$@"
