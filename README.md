@@ -4,6 +4,8 @@ A plugin to make git more readable and fun!
 
 Based on the [OWO Chrome extension](https://chrome.google.com/webstore/detail/owo/jolaggjkdhhgcdhcjjhfkkbllefoggob?hl=en) by leafysweetsgarden.
 
+## Example workflow
+
 ```bash
 git add -A
 git commit -m "Corrected bug!"
