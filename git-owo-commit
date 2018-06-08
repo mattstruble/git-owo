@@ -12,7 +12,7 @@ cmd_commit() {
 	
 	workingdir=$0
 	
-	. "./owoer"
+	. "./git-owo-owoer"
 
 	str=""
 	isM=0
