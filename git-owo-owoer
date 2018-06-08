@@ -4,6 +4,16 @@
 RANDOM=$$$(date +%s)
 
 FACES=("owo" "UwU" ">w<" "^w^")
+BUG=("fucksy" "fucksy wucksie" "spooky" "spooky wooky")
+FIXED=("fixy" "fixie wixied")
+IMPROVED=("streamylined")
+
+declare -A LOOKUP
+
+LOOKUP["ISSUE"]=$BUG
+LOOKUP["BUG"]=$BUG
+LOOKUP["FIXED"]=$FIXED
+LOOKUP["IMPROVED"]=$IMPROVED
 
 usage() {
 	echo "usage: git owo owoer -m <message>"
@@ -11,18 +21,39 @@ usage() {
 }
 
 owoText() {
-	local val="$@"
-	val=$(echo $val | \
-		sed -e 's/\(r\|l\)/w/g' \
-		-e 's/\(R\|L\)/W/g' \
-		-e 's/n\([aeiou]\)/ny\1/g' \
-		-e 's/N\([aeiou]\)/Ny\1/g' \
-		-e 's/N\([AEIOU]\)/Ny\1/g' \
-		-e 's/ove/uv/g' \
-		-e "s/\!\+/\ ${FACES[$RANDOM % ${#FACES[@]} ]}/g")
+	local str=""
+	local n=$#
+	local i=1
+	for word in "$@"
+	do
+		RANDOM=$$$(date +%s)
 
-	# "Return" the value passed in
-	echo "$val"
+		val=$word
+		if [ ${LOOKUP[${val^^}]+_} ]; then
+			ARR=${LOOKUP[${val^^}]}
+			val=${ARR[$RANDOM % ${#ARR[@]} ]}
+		else
+			val=$(echo $val | \
+				sed -e 's/\(r\|l\)/w/g' \
+				-e 's/\(R\|L\)/W/g' \
+				-e 's/n\([aeiou]\)/ny\1/g' \
+				-e 's/N\([aeiou]\)/Ny\1/g' \
+				-e 's/N\([AEIOU]\)/Ny\1/g' \
+				-e 's/ove/uv/g') 
+		fi
+		val=$(echo $val | sed -e "s/\!\+/\ ${FACES[$RANDOM % ${#FACES[@]} ]}/g")
+
+		if [ $i -lt $n ]; then 
+			str="$str$val "
+		else
+			str="$str$val"
+		fi
+
+		i=$((i+1))
+	done
+
+	# "Return" the translation
+	echo "$str"
 }
 
 cmd_owoer() {
