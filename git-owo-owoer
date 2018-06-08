@@ -21,11 +21,6 @@ usage() {
 }
 
 owoText() {
-	LOOKUP["ISSUE"]=$BUG
-	LOOKUP["BUG"]=$BUG
-	LOOKUP["FIXED"]=$FIXED
-	LOOKUP["IMPROVED"]=$IMPROVED
-
 	local str=""
 	local n=$#
 	local i=1
