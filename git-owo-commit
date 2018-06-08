@@ -20,7 +20,6 @@ cmd_commit() {
 	do
 		if [ $isM -eq 1 ]; then 
 			var="$(translateText "$var")"
-			var="\"$var\""
 			isM=0
 		fi
 
