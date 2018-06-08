@@ -7,14 +7,12 @@ Based on the [OWO Chrome extension](https://chrome.google.com/webstore/detail/ow
 ## Example workflow
 
 ```bash
-git add -A
 git commit -m "Corrected bug!"
 ```
 
 That is _such a boring commit message!_ Using this plugin that commit message can become more readable:
 
 ```bash
-git add -A
 git owo commit -m "Corrected bug!"
 # Translates to "Cowwected bug ^w^" 
 ``` 
