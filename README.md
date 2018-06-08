@@ -1,8 +1,8 @@
 # Git OwO
 
-A plugin to make git more readable and fun!
+A pwugin to make git mowe weadabwe and fun UwU
 
-Based on the [OWO Chrome extension](https://chrome.google.com/webstore/detail/owo/jolaggjkdhhgcdhcjjhfkkbllefoggob?hl=en) by leafysweetsgarden.
+Based on the [OWO Chrome extension](https://chrome.google.com/webstore/detail/owo/jolaggjkdhhgcdhcjjhfkkbllefoggob?hl=en) by leafysweets.
 
 ## Example workflow
 
@@ -10,14 +10,14 @@ Based on the [OWO Chrome extension](https://chrome.google.com/webstore/detail/ow
 git commit -m "Fixed bug!"
 ```
 
-That is _such a boring commit message!_ Using this plugin that commit message can become more readable:
+That is _such a bowing commit message!_ Using this pwugin that commit message can become mowe weadabwe:
 
 ```bash
 git owo commit -m "Fixed bug!"
 # Translates to "fixy bug ^w^" 
 ``` 
 
-So much better! :zap:
+So much bettew >w< :zap:
 
 ## Setup
 
@@ -25,7 +25,7 @@ So much better! :zap:
 git clone https://github.com/mattstruble/git-owo.git
 ```
 
-Then add the following to your `~/.bash_profile` (or `~/.zshrc`, or whatever profile you use): 
+Then add the fowwowing to youw `~/.bash_profile` (or `~/.zshrc`, or whatevew pwofiwe you use): 
 
 ```bash
 export PATH=path/to/git-owo:$PATH
