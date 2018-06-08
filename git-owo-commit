@@ -6,22 +6,29 @@ usage() {
 }
 
 cmd_commit() {
-	if [ "$#" -lt 1 ]; then 
+	if [ "$#" -lt 2 ]; then 
 		usage; exit 1
-	elif [ $1 == "help" ]; then
-		usage; exit 0
-	fi 
-
+	fi
+	
+	workingdir=$0
+	
 	str=""
+	isM=0
 	for var in "$@"
 	do
-		echo "$var"
+		if [ $isM -eq 1 ]; then 
+			# todo: translate
+			echo "translate"
+			isM=0
+		fi
+
+		if [ "$var" = "-m" ]; then
+			echo "ism"
+			isM=1
+		fi
+		echo $var
 		str="$str $var"
 	done
-
-	echo "$str"
+	echo $str
+#	git commit $str	
 }
-
-
-# testing purposes only
-cmd_commit "$@"

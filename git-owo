@@ -36,14 +36,13 @@ main() {
 		usage; exit 1
 	fi
 
-	echo "$workingdir"
-
+	path="$workingdir/git-owo-$subcommand"
 	# Load subcommand file and check that subcommand function exists
-	source "$workingdir/git-owo-$subcommand"
-	if [ ! type "cmd_$subcommand" ]; then
+	if [ ! -f "$path" ]; then
 		usage; exit 1
 	fi
-
+	. "$path" 
+	
 	# Run command
 	cmd_$subcommand "$@"
 }
