@@ -5,6 +5,11 @@ RANDOM=$$$(date +%s)
 
 FACES=("owo" "UwU" ">w<" "^w^")
 
+usage() {
+	echo "usage: git owo owoer -m <message>"
+	echo 
+}
+
 owoText() {
 	local val="$@"
 	val=$(echo $val | \
@@ -18,4 +23,21 @@ owoText() {
 
 	# "Return" the value passed in
 	echo "$val"
+}
+
+cmd_owoer() {
+	if [ "$#" -lt 2 ]; then 
+		usage; exit 1
+	fi
+
+	while getopts ":m:" opt; do
+		case "${opt}" in 
+			m)
+				owoText ${OPTARG}
+				;;
+			*)
+				usage
+				;;
+		esac 
+	done 
 }
