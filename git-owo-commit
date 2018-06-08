@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
 usage() {
 	echo "usage: git owo commit [options]"
@@ -12,23 +12,24 @@ cmd_commit() {
 	
 	workingdir=$0
 	
+	. "./owoer"
+
 	str=""
 	isM=0
 	for var in "$@"
 	do
 		if [ $isM -eq 1 ]; then 
-			# todo: translate
-			echo "translate"
+			var="$(translateText "$var")"
+			var="\"$var\""
 			isM=0
 		fi
 
 		if [ "$var" = "-m" ]; then
-			echo "ism"
 			isM=1
 		fi
-		echo $var
-		str="$str $var"
+		str="$str$var "
 	done
-	echo $str
-#	git commit $str	
+	opt=("$str")
+#	echo "${opt[@]}"
+	git commit "${opt[@]}"	
 }

@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
 version() {
 	echo "git owo v0.1.0"
