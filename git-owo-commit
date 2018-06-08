@@ -19,8 +19,9 @@ cmd_commit() {
 	isM=0
 	for var in "$@"
 	do
-		if [ $isM -eq 1 ]; then 
-			var="$(owoText "$var")"
+		if [ $isM -eq 1 ]; then
+			val=("$var")	
+			var="$(owoText ${val[@]})"
 			isM=0
 		fi
 
@@ -29,7 +30,6 @@ cmd_commit() {
 		fi
 		str="$str$var "
 	done
-
 	opt=("$str")
 	git commit "${opt[@]}"	
 }

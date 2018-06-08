@@ -21,6 +21,11 @@ usage() {
 }
 
 owoText() {
+	LOOKUP["ISSUE"]=$BUG
+	LOOKUP["BUG"]=$BUG
+	LOOKUP["FIXED"]=$FIXED
+	LOOKUP["IMPROVED"]=$IMPROVED
+
 	local str=""
 	local n=$#
 	local i=1
@@ -29,7 +34,7 @@ owoText() {
 		RANDOM=$$$(date +%s)
 
 		val=$word
-		if [ ${LOOKUP[${val^^}]+_} ]; then
+		if [ ${LOOKUP[${val^^}]} ]; then
 			ARR=${LOOKUP[${val^^}]}
 			val=${ARR[$RANDOM % ${#ARR[@]} ]}
 		else
