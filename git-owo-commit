@@ -30,6 +30,5 @@ cmd_commit() {
 		str="$str$var "
 	done
 	opt=("$str")
-#	echo "${opt[@]}"
 	git commit "${opt[@]}"	
 }
