@@ -6,7 +6,7 @@ FACES=("owo" "UwU" ">w<" "^w^")
 
 translateText() {
 	local val="$@"
-	val=$(echo $val | sed -e 's/\(r\|l\)/w/g' -e 's/\(R\|L\)/W/g' -e 's/n\([aeiou]\)/ny\1/g' -e 's/N\([aeiou]\)/Ny\1/g' -e 's/N\([AEIOU]\)/Ny\1/g' -e 's/ove/uv/g' -e "s/\!\+/\ ${FACES[$RANDOM % ${#FACES[@]} ]} \ /g")
+	val=$(echo $val | sed -e 's/\(r\|l\)/w/g' -e 's/\(R\|L\)/W/g' -e 's/n\([aeiou]\)/ny\1/g' -e 's/N\([aeiou]\)/Ny\1/g' -e 's/N\([AEIOU]\)/Ny\1/g' -e 's/ove/uv/g' -e "s/\!\+/\ ${FACES[$RANDOM % ${#FACES[@]} ]}/g")
 
 	# "Return" the value passed in
 	echo "$val"
