@@ -5,7 +5,7 @@ RANDOM=$$$(date +%s)
 
 FACES=("owo" "UwU" ">w<" "^w^")
 
-translateText() {
+owoText() {
 	local val="$@"
 	val=$(echo $val | \
 		sed -e 's/\(r\|l\)/w/g' \

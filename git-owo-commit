@@ -7,12 +7,12 @@ usage() {
 }
 
 cmd_commit() {
-	if [ "$#" -lt 2 ]; then 
+	# Ensure that options were passed in
+	if [ "$#" -lt 1 ]; then 
 		usage; exit 1
 	fi
-	
-	workingdir=$0
-	
+
+	# Include owoer functionality	
 	. "./git-owo-owoer"
 
 	str=""
@@ -20,7 +20,7 @@ cmd_commit() {
 	for var in "$@"
 	do
 		if [ $isM -eq 1 ]; then 
-			var="$(translateText "$var")"
+			var="$(owoText "$var")"
 			isM=0
 		fi
 
@@ -29,6 +29,7 @@ cmd_commit() {
 		fi
 		str="$str$var "
 	done
+
 	opt=("$str")
 	git commit "${opt[@]}"	
 }
